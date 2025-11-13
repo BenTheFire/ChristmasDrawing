@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{% block title %}Unbox App{% endblock %}</title>
+
+  <!-- Tailwind Play CDN (good for dev) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* small custom enhancements alongside Tailwind */
+    .box-3d { perspective: 900px; }
+    .box-inner {
+      width: 260px; height: 170px;
+      background: linear-gradient(180deg,#7c3aed,#5b21b6);
+      border-radius: 12px; position: relative; transform-style: preserve-3d;
+      box-shadow: 0 18px 40px rgba(99,102,241,0.18);
+      transition: transform 500ms cubic-bezier(.2,.9,.3,1);
+    }
+    .lid {
+      position: absolute; left: 0; right: 0; top: -34px; height: 52px;
+      background: linear-gradient(180deg,#6d28d9,#4c1d95);
+      border-radius: 12px; transform-origin: center bottom;
+      transform: rotateX(0deg);
+      transition: transform 700ms cubic-bezier(.2,.9,.3,1);
+      box-shadow: 0 10px 30px rgba(74,20,140,0.25);
+    }
+    .content {
+      position: absolute; inset: 18px; color: white; font-weight: 700;
+      display:flex; align-items:center; justify-content:center; text-align:center;
+      transform: translateY(14px) scale(.98); opacity: 0; transition: all 420ms ease;
+      pointer-events: none;
+    }
+    .content.visible { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; }
+    /* subtle shine */
+    .shine::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(120deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
+      mix-blend-mode: overlay; pointer-events: none; border-radius: 12px;
+    }
+  </style>
+
+  {% block head %}{% endblock %}
+</head>
+<body class="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50 to-indigo-100">
+  <div class="max-w-3xl mx-auto px-4 py-12">
+    {% block body %}{% endblock %}
+  </div>
+</body>
+</html>

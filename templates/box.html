@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Unbox - {{ user }}{% endblock %}
+{% block body %}
+<div class="flex flex-col items-center gap-6">
+  <div class="w-full flex justify-between items-center">
+    <div class="text-slate-600">Logged in as <strong class="text-slate-800">{{ user }}</strong></div>
+    <a href="{{ url_for('logout') }}" class="text-sm text-indigo-600 hover:underline">Logout</a>
+  </div>
+
+  <div class="box-3d">
+    <div id="box" class="box-inner shine">
+      <div id="lid" class="lid"></div>
+      <div id="content" class="content text-lg">
+        <div class="px-4 py-2 bg-white/10 rounded-md">{{ reveal_text }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex gap-3">
+    <button id="openBtn" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">Open Box</button>
+    <button id="resetBtn" class="px-4 py-2 bg-white border rounded-md">Reset</button>
+  </div>
+</div>
+
+<script>
+const openBtn = document.getElementById('openBtn');
+const resetBtn = document.getElementById('resetBtn');
+const lid = document.getElementById('lid');
+const box = document.getElementById('box');
+const content = document.getElementById('content');
+
+function openAnimation() {
+  // add little scale pop
+  box.style.transform = 'translateY(-4px) scale(1.03)';
+  setTimeout(() => box.style.transform = 'translateY(0) scale(1)', 180);
+
+  // flip lid open with easing
+  lid.style.transform = 'rotateX(-120deg)';
+  // after lid opens, reveal content
+  setTimeout(() => content.classList.add('visible'), 520);
+
+  // brief glow pulse on reveal
+  setTimeout(() => {
+    box.style.boxShadow = '0 28px 60px rgba(99,102,241,0.22)';
+    setTimeout(() => box.style.boxShadow = '', 600);
+  }, 600);
+}
+
+function resetAnimation() {
+  lid.style.transform = 'rotateX(0deg)';
+  content.classList.remove('visible');
+  box.style.transform = '';
+  box.style.boxShadow = '';
+}
+
+openBtn.addEventListener('click', openAnimation);
+resetBtn.addEventListener('click', resetAnimation);
+</script>
+{% endblock %}

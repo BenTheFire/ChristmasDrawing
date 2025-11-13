@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "username": "legobenike@gmail.com",
+      "password": "CHRISTMAS_BEN_qW9sfei",
+      "reveal": "You got: 'Nimród'!"
+    },
+    {
+      "username": "barniisbest@gmail.com",
+      "password": "CHRISTMAS_BARNI_o?Vds21",
+      "reveal": "You got: 'Andris'!"
+    },
+    {
+      "username": "banfalvia3@gmail.com",
+      "password": "CHRISTMAS_ANDRIS_69Lrot",
+      "reveal": "You got: 'Ádám'!"
+    },
+    {
+        "username": "adamerdos11@gmail.com",
+        "password": "CHRISTMAS_ADAM_Ws3rT56",
+        "reveal": "You got: 'Benedek'!"
+    },
+    {
+      "username": "nimroad",
+      "password": "CHRISTMAS_NIMROAD_Sd4fG12",
+      "reveal": "You got: 'Dani'!"
+    },
+    {
+      "username": "dani",
+      "password": "CHRISTMAS_DANI_Fg7hJ89",
+      "reveal": "You got: 'Barni'!"
+    }
+  ]
+}
